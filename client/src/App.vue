@@ -15,7 +15,7 @@ export default {
     return {
       msftData: null,
       fbData: null,
-      applData: null,
+      aaplData: null,
       amznData: null,
       nflxData: null,
       tslaData: null,
@@ -30,6 +30,10 @@ export default {
     fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=FB&apikey=${apiKey}`)
     .then(res => res.json())
     .then(fbData => this.fbData = fbData);
+
+    fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=AAPL&apikey=${apiKey}`)
+    .then(res => res.json())
+    .then(aaplData => this.aaplData = aaplData);
 
   }
 }

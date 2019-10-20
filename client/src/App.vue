@@ -3,6 +3,7 @@
     <div id="Header bar">
         <h1>Share Tracker</h1>
     </div>
+    <user-profile :shares="currentShares"/>
   </div>
 </template>
 
@@ -11,6 +12,7 @@ import apiKeyA from './assets/secretConfig.js';
 import apiKeyB from './assets/secretConfig.js';
 import apiKeyC from './assets/secretConfig.js';
 import ShareService from './services/ShareService.js';
+import UserProfile from './components/UserProfile.vue';
 
 export default {
   name: 'app',
@@ -58,6 +60,9 @@ export default {
       ShareService.getShares()
       .then(shares => this.currentShares = shares);
     }
+  },
+  components: {
+    'user-profile': UserProfile
   }
 }
 </script>

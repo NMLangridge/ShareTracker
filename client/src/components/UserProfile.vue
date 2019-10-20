@@ -1,8 +1,6 @@
 <template lang="html">
   <div>
-    <ul>
-      <li v-for="share in shares">{{ share.company }}</li>
-    </ul>
+    <p>Current Share Total: {{shareTotal.toFixed(2)}}</p>
   </div>
 </template>
 
@@ -12,7 +10,15 @@ export default {
   props: ['shares'],
   data() {
     return{
-      name: 'Nathan Buffet'
+      name: 'Nathan Buffet',
+      total: 0
+    }
+  },
+  computed: {
+    shareTotal: function() {
+      return this.shares.reduce((runningTotal, share) => {
+        return runningTotal + (share.boughtPrice * share.quantity)
+      }, 0)
     }
   }
 }

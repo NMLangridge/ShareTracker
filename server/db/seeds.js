@@ -4,21 +4,21 @@ db.dropDatabase();
 
 db.boughtPrice.insertMany([
   {
-    company: 'Facebook',
     stockSymbol: 'FB',
-    boughtPrice: 185.85
+    boughtPrice: 185.85,
+    quantity: 2
   },
 
   {
-    company: 'Microsoft',
     stockSymbol: 'MSFT',
-    boughtPrice: 137.41
+    boughtPrice: 137.41,
+    quantity: 1
   },
 
   {
-    company: 'Apple',
     stockSymbol: 'AAPL',
-    boughtPrice: 236.41
+    boughtPrice: 236.41,
+    quantity: 3
   }
 
 ]);

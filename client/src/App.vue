@@ -10,6 +10,7 @@
 import apiKeyA from './assets/secretConfig.js';
 import apiKeyB from './assets/secretConfig.js';
 import apiKeyC from './assets/secretConfig.js';
+import ShareService from './services/ShareService.js';
 
 export default {
   name: 'app',
@@ -20,7 +21,8 @@ export default {
       aaplData: null,
       amznData: null,
       nflxData: null,
-      tslaData: null
+      tslaData: null,
+      currentShares: []
     }
   },
   mounted(){
@@ -47,6 +49,15 @@ export default {
     fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=TSLA&apikey=${apiKeyC}`)
     .then(res => res.json())
     .then(tslaData => this.tslaData = tslaData);
+
+    this.fetchData();
+  },
+
+  methods: {
+    fetchData(){
+      ShareService.getShares()
+      .then(shares => this.currentShares = shares);
+    }
   }
 }
 </script>

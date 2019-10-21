@@ -1,7 +1,8 @@
 <template lang="html">
   <div>
     <highcharts :options="chartOptions"></highcharts>
-    <button type="button" name="button" v-on:click="fillPrices"></button>
+    <button type="button" name="button" @click="refreshData">Show Performance Data</button>
+    <!-- <button type="button" name="button" v-on:click="fillCategories"></button> -->
   </div>
 </template>
 
@@ -10,7 +11,7 @@ import HighCharts from 'highcharts'
 import exportingInit from 'highcharts/modules/exporting'
 export default {
   name: 'chart',
-  props: ['msftData'],
+  props: ['stock'],
   data() {
     return {
       prices: [],
@@ -19,25 +20,47 @@ export default {
           text: "Stock Trend"
         },
         series: [{
-          name: "MSFT",
+          name: this.stock["Meta Data"]["2. Symbol"],
           data: []
-        }]
+        }],
+        xAxis: {
+          categories: []
+        }
       }
     }
   },
   methods: {
     fillPrices() {
-      for (var day in this.msftData['Time Series (Daily)']) {
-        if (this.msftData['Time Series (Daily)'].hasOwnProperty(day)) {
-          let obj = this.msftData['Time Series (Daily)'][day];
+      for (var day in this.stock['Time Series (Daily)']) {
+        if (this.stock['Time Series (Daily)'].hasOwnProperty(day)) {
+          let obj = this.stock['Time Series (Daily)'][day];
           let price = parseFloat(obj['4. close']);
           if (this.chartOptions.series[0].data.length < 50){
             this.chartOptions.series[0].data.push(price)
           }
         }
       }
+    },
+    fillCategories() {
+      for (var day in this.stock['Time Series (Daily)']) {
+        if (this.chartOptions.xAxis.categories.length < 50){
+          this.chartOptions.xAxis.categories.push(day)
+        }
+      }
+    },
+    refreshData() {
+      this.chartOptions.series[0].data = [];
+      this.fillPrices();
+      this.chartOptions.xAxis.categories = [];
+      this.fillCategories();
+      this.chartOptions.series[0].name = this.stock["Meta Data"]["2. Symbol"];
     }
   }
+  // mounted() {
+  //   this.fillPrices();
+  //   this.fillCategories();
+  //
+  // }
 }
 </script>
 

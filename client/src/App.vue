@@ -5,9 +5,6 @@
     </div>
     <user-profile :shares="currentShares"/>
     <user-stock-selector :MSFT="msftData" :FB="fbData" :AAPL="aaplData" :AMZN="amznData" :NFLX="nflxData" :TSLA="tslaData"/>
-    <div class="chart">
-      <chart :msftData="msftData"></chart>
-    </div>
   </div>
 </template>
 

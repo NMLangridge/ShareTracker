@@ -1,8 +1,7 @@
 <template lang="html">
   <div>
-    <highcharts :options="chartOptions"></highcharts>
     <button type="button" name="button" @click="refreshData">Show Performance Data</button>
-    <!-- <button type="button" name="button" v-on:click="fillCategories"></button> -->
+    <highcharts :options="chartOptions"></highcharts>
   </div>
 </template>
 
@@ -16,8 +15,19 @@ export default {
     return {
       prices: [],
       chartOptions: {
+        chart: {
+          zoomType: 'x'
+        },
         title: {
           text: "Stock Trend"
+        },
+        xAxis: {
+          type: 'datetime'
+        },
+        yAxis: {
+          title: {
+            text: "Price"
+          }
         },
         series: [{
           name: this.stock["Meta Data"]["2. Symbol"],

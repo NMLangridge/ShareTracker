@@ -1,19 +1,22 @@
 <template lang="html">
 <div class="market">
+  <h2>Marketplace</h2>
   <form v-on:submit="buyShares" method="post">
-    <label for="share-select">Select a Company</label>
-    <select v-model="selectedShare">
-      <option disabled value="">Select Company</option>
-      <option :value="MSFT">Microsoft</option>
-      <option :value="FB">Facebook</option>
-      <option :value="AAPL">Apple</option>
-      <option :value="AMZN">Amazon</option>
-      <option :value="NFLX">Netflix</option>
-      <option :value="TSLA">Tesla</option>
-    </select>
-    <label for="amount">Number of Shares</label>
-    <input type="number" id="amount" v-model="shareAmount">
-    <input type="submit" name="BUY" value="Buy">
+    <div id="buy-form">
+      <label for="share-select">Select a Company </label>
+      <select v-model="selectedShare">
+        <option disabled value="">Select Company</option>
+        <option :value="MSFT">Microsoft</option>
+        <option :value="FB">Facebook</option>
+        <option :value="AAPL">Apple</option>
+        <option :value="AMZN">Amazon</option>
+        <option :value="NFLX">Netflix</option>
+        <option :value="TSLA">Tesla</option>
+      </select>
+      <label for="amount"> Number of Shares </label>
+      <input type="number" id="amount" v-model="shareAmount">
+    </div>
+    <input id="buy-button" type="submit" name="BUY" value="Buy">
   </form>
 </div>
 </template>
@@ -49,4 +52,27 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.market {
+  border: 1px black solid;
+}
+
+h2 {
+  text-align: center;
+}
+
+#buy-form {
+  border: 1px black solid;
+  display: inline-block;
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#buy-button {
+  border: 1px black solid;
+  display: block;
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+}
 </style>

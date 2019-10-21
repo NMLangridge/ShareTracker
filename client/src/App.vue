@@ -8,10 +8,15 @@
     <div class="chart">
       <chart :msftData="msftData"></chart>
     </div>
+    <div class="market">
+      <market :MSFT="msftData" :FB="fbData" :AAPL="aaplData" :AMZN="amznData" :NFLX="nflxData" :TSLA="tslaData" />
+    </div>
   </div>
 </template>
 
 <script>
+import { eventBus } from './main.js';
+import Market from './components/Market.vue';
 import Chart from './components/Chart.vue'
 import apiKeyA from './assets/secretConfig.js';
 import apiKeyB from './assets/secretConfig.js';
@@ -34,7 +39,7 @@ export default {
     }
   },
   mounted(){
-    fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=MSFT&apikey=${apiKeyA}`)
+    fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=MSFT&apikey=demo`)
     .then(res => res.json())
     .then(msftData => this.msftData = msftData);
 
@@ -59,6 +64,10 @@ export default {
     .then(tslaData => this.tslaData = tslaData);
 
     this.fetchData();
+
+    eventBus.$on("purchase-added", purchase => {
+      this.currentShares.push(purchase)
+    })
   },
 
   methods: {
@@ -70,7 +79,8 @@ export default {
   components: {
     'user-profile': UserProfile,
     'user-stock-selector': UserStockSelector,
-    'chart': Chart
+    'chart': Chart,
+    'market': Market
   }
 }
 </script>

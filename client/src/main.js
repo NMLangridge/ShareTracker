@@ -6,6 +6,8 @@ Vue.config.productionTip = false
 
 Vue.use(HighchartsVue)
 
+export const eventBus = new Vue();
+
 new Vue({
   render: h => h(App),
 }).$mount('#app')

@@ -1,6 +1,11 @@
 <template lang="html">
   <div>
-    <p>Current Share Total: {{shareTotal.toFixed(2)}}</p>
+    <h4>Welcome to your Portfolio {{ this.name }}</h4>
+    <p>You're current Shares are: </p>
+    <ul>
+      <li v-for="share in shares">{{ share.stockSymbol }} - {{ share.quantity }}</li>
+    </ul>
+    <p>Current Share Total: £{{shareTotal.toFixed(2)}}</p>
   </div>
 </template>
 

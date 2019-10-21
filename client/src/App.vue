@@ -54,7 +54,7 @@ export default {
 
     fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=NFLX&apikey=${apiKeyC}`)
     .then(res => res.json())
-    .then(nflxData => this.nflxData =nflxData);
+    .then(nflxData => this.nflxData = nflxData);
 
     fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=TSLA&apikey=${apiKeyC}`)
     .then(res => res.json())

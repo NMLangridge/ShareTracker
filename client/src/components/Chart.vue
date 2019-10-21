@@ -61,8 +61,10 @@ export default {
     refreshData() {
       this.chartOptions.series[0].data = [];
       this.fillPrices();
+      this.chartOptions.series[0].data.reverse();
       this.chartOptions.xAxis.categories = [];
       this.fillCategories();
+      this.chartOptions.xAxis.categories.reverse();
       this.chartOptions.series[0].name = this.stock["Meta Data"]["2. Symbol"];
     }
   }

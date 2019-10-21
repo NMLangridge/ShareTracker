@@ -5,10 +5,14 @@
     </div>
     <user-profile :shares="currentShares"/>
     <user-stock-selector :MSFT="msftData" :FB="fbData" :AAPL="aaplData" :AMZN="amznData" :NFLX="nflxData" :TSLA="tslaData"/>
+    <div class="chart">
+      <chart :msftData="msftData"></chart>
+    </div>
   </div>
 </template>
 
 <script>
+import Chart from './components/Chart.vue'
 import apiKeyA from './assets/secretConfig.js';
 import apiKeyB from './assets/secretConfig.js';
 import apiKeyC from './assets/secretConfig.js';
@@ -65,7 +69,8 @@ export default {
   },
   components: {
     'user-profile': UserProfile,
-    'user-stock-selector': UserStockSelector
+    'user-stock-selector': UserStockSelector,
+    'chart': Chart
   }
 }
 </script>

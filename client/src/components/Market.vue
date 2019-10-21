@@ -39,7 +39,6 @@ export default {
         boughtPrice: this.selectedShare["Time Series (Daily)"]["2019-05-30"]["4. close"],
         quantity: this.shareAmount
       }
-      debugger;
       ShareService.postShare(payload)
       .then(purchase => {
         eventBus.$emit("purchase-added", purchase)

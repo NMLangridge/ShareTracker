@@ -11,7 +11,7 @@ export default {
       method: "POST",
       body: JSON.stringify(payload),
       headers: {
-        "content-type": "application-json"
+        "Content-Type": "application/json"
       }
     })
     .then(res => res.json())

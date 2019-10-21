@@ -33,13 +33,13 @@ export default {
   methods: {
     buyShares(event) {
       event.preventDefault();
-      debugger;
-      const payload = {
-        stockSymbol: this.selectedShare["Meta Data"]["2. Symbol"],
-        boughtPrice: this.selectedShare["Time Series (Daily)"]["2019-05-30"],
-        quantity: this.shareAmount
-      };
 
+      let payload = {
+        stockSymbol: this.selectedShare["Meta Data"]["2. Symbol"],
+        boughtPrice: this.selectedShare["Time Series (Daily)"]["2019-05-30"]["4. close"],
+        quantity: this.shareAmount
+      }
+      debugger;
       ShareService.postShare(payload)
       .then(purchase => {
         eventBus.$emit("purchase-added", purchase)

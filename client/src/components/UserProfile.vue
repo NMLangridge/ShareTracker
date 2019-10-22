@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
     <h4>Welcome to your Portfolio {{ this.name }}</h4>
-    <p>You're current Shares are: </p>
+    <p>You're current open trades are: </p>
     <ul>
       <share-item v-for="(share, index) in shares" :key="index" :share="share"></share-item>
     </ul>

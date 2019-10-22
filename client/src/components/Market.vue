@@ -39,7 +39,7 @@ export default {
 
       let payload = {
         stockSymbol: this.selectedShare["Meta Data"]["2. Symbol"],
-        boughtPrice: this.selectedShare["Time Series (Daily)"]["2019-05-30"]["4. close"],
+        boughtPrice: this.selectedShare["Time Series (Daily)"]["2019-10-21"]["4. close"],
         quantity: this.shareAmount
       }
       ShareService.postShare(payload)

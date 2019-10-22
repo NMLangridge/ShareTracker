@@ -65,6 +65,13 @@ export default {
     eventBus.$on("purchase-added", purchase => {
       this.currentShares.push(purchase)
     })
+
+    eventBus.$on("share-deleted", (id)  => {
+      const index = this.currentShares.findIndex(share => {
+        return share._id === id
+      })
+      this.currentShares.splice(index, 1)
+    })
   },
 
   methods: {

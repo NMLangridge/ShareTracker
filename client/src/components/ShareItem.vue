@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <p>{{ share.quantity }} shares in {{ share.stockSymbol }} @ {{this.share.boughtPrice}}</p>
+    <p>{{ share.quantity }} shares in {{ share.stockSymbol }} @ {{this.share.boughtPrice}} each</p>
     <button  v-on:click="deleteShare" type="button" name="close-trade"> Close Trade</button>
   </div>
 </template>

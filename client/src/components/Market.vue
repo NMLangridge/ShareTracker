@@ -10,7 +10,7 @@
         <option :value="FB">Facebook</option>
         <option :value="AAPL">Apple</option>
         <option :value="AMZN">Amazon</option>
-        <option :value="NFLX">Netflix</option>
+        <option :value="SBUX">Starbucks</option>
         <option :value="TSLA">Tesla</option>
       </select>
       <label for="amount"> Number of Shares </label>
@@ -26,12 +26,17 @@ import { eventBus } from '../main.js';
 import ShareService from '../services/ShareService.js';
 export default {
   name: 'market',
-  props: ['MSFT', 'FB', 'AAPL', 'AMZN', 'NFLX', 'TSLA'],
+  props: ['MSFT', 'FB', 'AAPL', 'AMZN', 'SBUX', 'TSLA'],
   data() {
     return {
       selectedShare: null,
-      shareAmount: null
+      shareAmount: null,
+      yesterday: ""
     }
+  },
+  mounted() {
+    this.setYesterday();
+    console.log(this.yesterday);
   },
   methods: {
     buyShares(event) {
@@ -39,13 +44,21 @@ export default {
 
       let payload = {
         stockSymbol: this.selectedShare["Meta Data"]["2. Symbol"],
-        boughtPrice: this.selectedShare["Time Series (Daily)"]["2019-05-30"]["4. close"],
+        boughtPrice: this.selectedShare["Time Series (Daily)"][this.yesterday]["4. close"],
         quantity: this.shareAmount
       }
       ShareService.postShare(payload)
       .then(purchase => {
         eventBus.$emit("purchase-added", purchase)
       })
+    },
+    setYesterday() {
+      let today = new Date();
+      let dd = String(today.getDate()).padStart(2, '0');
+      let mm = String(today.getMonth() + 1).padStart(2, '0');
+      let yyyy = today.getFullYear();
+
+      this.yesterday = yyyy + '-' + mm + '-' + (dd - 1);
     }
   }
 }

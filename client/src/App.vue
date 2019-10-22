@@ -4,9 +4,9 @@
         <h1>Share Tracker</h1>
     </div>
     <user-profile :shares="currentShares"/>
-    <user-stock-selector :MSFT="msftData" :FB="fbData" :AAPL="aaplData" :AMZN="amznData" :NFLX="nflxData" :TSLA="tslaData"/>
+    <user-stock-selector :MSFT="msftData" :FB="fbData" :AAPL="aaplData" :AMZN="amznData" :SBUX="sbuxData" :TSLA="tslaData"/>
     <div class="market">
-      <market :MSFT="msftData" :FB="fbData" :AAPL="aaplData" :AMZN="amznData" :NFLX="nflxData" :TSLA="tslaData" />
+      <market :MSFT="msftData" :FB="fbData" :AAPL="aaplData" :AMZN="amznData" :SBUX="sbuxData" :TSLA="tslaData" />
     </div>
   </div>
 </template>
@@ -30,7 +30,7 @@ export default {
       fbData: null,
       aaplData: null,
       amznData: null,
-      nflxData: null,
+      sbuxData: null,
       tslaData: null,
       currentShares: []
     }
@@ -52,9 +52,9 @@ export default {
     .then(res => res.json())
     .then(amznData => this.amznData = amznData);
 
-    fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=NFLX&apikey=${apiKeyC}`)
+    fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=SBUX&apikey=${apiKeyC}`)
     .then(res => res.json())
-    .then(nflxData => this.nflxData = nflxData);
+    .then(sbuxData => this.sbuxData = sbuxData);
 
     fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=TSLA&apikey=${apiKeyC}`)
     .then(res => res.json())

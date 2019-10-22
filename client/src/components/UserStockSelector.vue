@@ -6,7 +6,7 @@
       <option :value="FB">Facebook</option>
       <option :value="AAPL">Apple</option>
       <option :value="AMZN">Amazon</option>
-      <option :value="NFLX">Netflix</option>
+      <option :value="SBUX">Starbucks</option>
       <option :value="TSLA">Tesla</option>
     </select>
     <!-- <button @click="handleAdd">Add to Portfolio</button> -->
@@ -25,7 +25,7 @@ export default {
       stock: null
     }
   },
-  props: ['MSFT', 'FB', 'AAPL', 'AMZN', 'NFLX', 'TSLA'],
+  props: ['MSFT', 'FB', 'AAPL', 'AMZN', 'SBUX', 'TSLA'],
   components: {
     'chart': Chart
   }

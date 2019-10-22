@@ -1,5 +1,6 @@
 <template lang="html">
   <div class="app-wrapper">
+    <stock-ticker :MSFT="msftData" :FB="fbData" :AAPL="aaplData" :AMZN="amznData" :SBUX="sbuxData" :TSLA="tslaData" />
     <div id="Header bar">
         <h1>Share Tracker</h1>
     </div>
@@ -21,6 +22,7 @@ import apiKeyC from './assets/secretConfig.js';
 import ShareService from './services/ShareService.js';
 import UserProfile from './components/UserProfile.vue';
 import UserStockSelector from './components/UserStockSelector.vue';
+import StockTicker from './components/StockTicker.vue';
 
 export default {
   name: 'app',
@@ -84,7 +86,8 @@ export default {
     'user-profile': UserProfile,
     'user-stock-selector': UserStockSelector,
     'chart': Chart,
-    'market': Market
+    'market': Market,
+    'stock-ticker': StockTicker
   }
 }
 </script>

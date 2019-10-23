@@ -23,6 +23,7 @@ export default {
 <style lang="css" scoped>
 
 #share-item {
+  min-width: 450px;
   padding-top: 20px;
   padding-left: 15px;
   padding-right: 15px;
@@ -38,7 +39,9 @@ p {
 }
 
 button {
+  margin-top: 20px;
   display: inline-block;
+  float: right;
 }
 
 .close-btn {

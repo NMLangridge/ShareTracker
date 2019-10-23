@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
     <p>{{ share.quantity }} shares in {{ share.stockSymbol }} @ {{this.share.boughtPrice}} each</p>
-    <button  v-on:click="deleteShare" type="button" name="close-trade"> Close Trade</button>
+    <button id="deleteButton" v-on:click="deleteShare" type="button" name="close-trade"> Close Trade</button>
   </div>
 </template>
 
@@ -21,11 +21,15 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
 p {
   display: inline-block;
 }
 
 button {
-  display: inline-block;
+  border: 1px black solid;
+  display: block;
+  position: relative;
 }
+
 </style>

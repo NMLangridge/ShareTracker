@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
-    <h4>Welcome to your Portfolio {{ this.name }}</h4>
-    <p>You're current open trades are: </p>
+    <h4>Welcome to your Portfolio, {{ this.name }}.</h4>
+    <p>Your current open trades are: </p>
     <ul>
       <share-item v-for="(share, index) in shares" :key="index" :share="share"></share-item>
     </ul>
@@ -34,4 +34,24 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+div {
+  font-family: 'Orienta', sans-serif;
+  font-size: 24px;
+  background-color: mediumseagreen;
+}
+
+h4 {
+  text-align: center;
+}
+
+p {
+  text-align: left;
+  padding-left: 10px;
+}
+
+ul {
+  line-height: 0.1;
+}
+
 </style>

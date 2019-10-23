@@ -69,7 +69,7 @@ span {
 }
 
 .stock-news {
-  background-color: #33A3F1;
+  background-color: #3CB3AD;
   color: #ffffff;
   border-radius: 10px 50px 50px 10px;
   padding: 5px;
@@ -85,7 +85,7 @@ span {
 }
 
 .time {
-  color: #33A3F1;
+  color: mediumseagreen;
 }
 
 .stock {

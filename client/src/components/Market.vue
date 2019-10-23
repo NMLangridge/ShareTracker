@@ -3,8 +3,8 @@
   <h2>Marketplace</h2>
   <form v-on:submit="buyShares" method="post">
     <div id="buy-form">
-      <label for="share-select">Select a Company </label>
-      <select v-model="selectedShare">
+      <label class="form-item" for="share-select">Select a Company </label>
+      <select class="form-item" v-model="selectedShare">
         <option disabled value="">Select Company</option>
         <option :value="MSFT">Microsoft</option>
         <option :value="FB">Facebook</option>
@@ -13,10 +13,10 @@
         <option :value="SBUX">Starbucks</option>
         <option :value="TSLA">Tesla</option>
       </select>
-      <label for="amount"> Number of Shares </label>
-      <input type="number" id="amount" v-model="shareAmount">
+      <label class="form-item" for="amount"> Number of Shares </label>
+      <input class="form-item" type="number" id="amount" v-model="shareAmount">
     </div>
-    <input id="buy-button" type="submit" name="BUY" value="Buy">
+    <input id="buy-button" class="buy-btn" type="submit" name="BUY" value="Buy">
   </form>
 </div>
 </template>
@@ -66,26 +66,54 @@ export default {
 
 <style lang="css" scoped>
 .market {
-  border: 1px black solid;
+
 }
 
 h2 {
   text-align: center;
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: white;
+  font-size: 32px;
 }
 
 #buy-form {
-  border: 1px black solid;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
   position: relative;
   margin-right: auto;
   margin-left: auto;
+  margin-bottom: 25px;
 }
 
 #buy-button {
-  border: 1px black solid;
   display: block;
   position: relative;
   margin-right: auto;
   margin-left: auto;
+}
+
+.market {
+  width: 100vmax;
+  margin-left: -0.5rem;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+.form-item {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.buy-btn {
+  background-color: #3CB3AD;
+  color: ghostwhite;
+  border: 1px solid white;
+  padding: 10px 30px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.buy-btn:hover {
+  background-color: mediumseagreen;
 }
 </style>

@@ -1,13 +1,10 @@
 <template lang="html">
   <div class="app-wrapper">
     <stock-ticker :MSFT="msftData" :FB="fbData" :AAPL="aaplData" :AMZN="amznData" :SBUX="sbuxData" :TSLA="tslaData" />
-    <div id="Header bar">
-        <h1>Share Tracker</h1>
-    </div>
-    <user-profile :shares="currentShares"/>
-    <user-stock-selector :MSFT="msftData" :FB="fbData" :AAPL="aaplData" :AMZN="amznData" :SBUX="sbuxData" :TSLA="tslaData"/>
+    <user-profile id="user-profile" :shares="currentShares"/>
+    <user-stock-selector id="stock-selector" :MSFT="msftData" :FB="fbData" :AAPL="aaplData" :AMZN="amznData" :SBUX="sbuxData" :TSLA="tslaData"/>
     <div class="market">
-      <market :MSFT="msftData" :FB="fbData" :AAPL="aaplData" :AMZN="amznData" :SBUX="sbuxData" :TSLA="tslaData" />
+      <market id="market" :MSFT="msftData" :FB="fbData" :AAPL="aaplData" :AMZN="amznData" :SBUX="sbuxData" :TSLA="tslaData" />
     </div>
   </div>
 </template>
@@ -42,25 +39,25 @@ export default {
     .then(res => res.json())
     .then(msftData => this.msftData = msftData);
 
-    fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=FB&apikey=${apiKeyA}`)
-    .then(res => res.json())
-    .then(fbData => this.fbData = fbData);
-
-    fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=AAPL&apikey=${apiKeyB}`)
-    .then(res => res.json())
-    .then(aaplData => this.aaplData = aaplData);
-
-    fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=AMZN&apikey=${apiKeyB}`)
-    .then(res => res.json())
-    .then(amznData => this.amznData = amznData);
-
-    fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=SBUX&apikey=${apiKeyC}`)
-    .then(res => res.json())
-    .then(sbuxData => this.sbuxData = sbuxData);
-
-    fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=TSLA&apikey=${apiKeyC}`)
-    .then(res => res.json())
-    .then(tslaData => this.tslaData = tslaData);
+    // fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=FB&apikey=${apiKeyA}`)
+    // .then(res => res.json())
+    // .then(fbData => this.fbData = fbData);
+    //
+    // fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=AAPL&apikey=${apiKeyB}`)
+    // .then(res => res.json())
+    // .then(aaplData => this.aaplData = aaplData);
+    //
+    // fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=AMZN&apikey=${apiKeyB}`)
+    // .then(res => res.json())
+    // .then(amznData => this.amznData = amznData);
+    //
+    // fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=SBUX&apikey=${apiKeyC}`)
+    // .then(res => res.json())
+    // .then(sbuxData => this.sbuxData = sbuxData);
+    //
+    // fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=TSLA&apikey=${apiKeyC}`)
+    // .then(res => res.json())
+    // .then(tslaData => this.tslaData = tslaData);
 
     this.fetchData();
 
@@ -93,4 +90,25 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+#market {
+  background-color: #3cb371;
+}
+
+.app-wrapper {
+  width: 100%;
+  font-family: 'Orienta', sans-serif;
+}
+
+.user-profile {
+  position: relative;
+  left: -20em;
+  margin-left: -10rem;
+  width: 100vmax;
+}
+
+#stock-selector {
+  min-height: 450px;
+}
+
 </style>

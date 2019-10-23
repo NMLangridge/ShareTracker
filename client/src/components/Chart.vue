@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <button type="button" name="button" @click="refreshData">Show Performance Data</button>
+    <button type="button" class="show-btn" name="button" @click="refreshData">Show Performance Data</button>
     <highcharts :options="chartOptions"></highcharts>
   </div>
 </template>
@@ -77,4 +77,18 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.show-btn{
+  background-color: ghostwhite;
+  color: black;
+  border: 1px solid white;
+  padding: 5px 20px;
+  cursor: pointer;
+  border-radius: 10px;
+  max-width: 50vmax;
+}
+
+.show-btn:hover{
+  background-color: #3CB3AD;
+  color: ghostwhite;
+}
 </style>
